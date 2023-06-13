@@ -1,14 +1,24 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {rs} from '../../../utils/responsiveSize/responsiveSize';
-
+const {width} = Dimensions.get('screen');
 export const loginStyle = colors =>
   StyleSheet.create({
-    container: {
+    keyboardAvoidingView: {
+      flex: 1,
+    },
+    scroll_view: {
       flex: 1,
       backgroundColor: colors.white,
+    },
+    container: {
+      flex: 1,
+      marginBottom: rs(100),
       alignItems: 'center',
       paddingHorizontal: rs(20),
       textAlign: 'center',
+    },
+    input: {
+      width: width - rs(80),
     },
     headerCont: {
       marginTop: rs(40),
@@ -23,5 +33,6 @@ export const loginStyle = colors =>
       color: colors.dark,
       lineHeight: rs(36),
       textTransform: 'uppercase',
+      letterSpacing: rs(-0.75),
     },
   });
