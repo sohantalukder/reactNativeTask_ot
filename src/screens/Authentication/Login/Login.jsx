@@ -79,6 +79,12 @@ const Login = () => {
               btnTextStyle={styles.btnTextStyle}
               onPress={handleLogin}
             />
+            <Text style={styles.forget}>Forget Password?</Text>
+            <View style={styles.logInTextCont}>
+              <View style={styles.underLine}></View>
+              <Text style={styles.loginText}>Or, Log in with</Text>
+              <View style={styles.underLine}></View>
+            </View>
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>

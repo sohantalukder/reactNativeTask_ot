@@ -23,7 +23,6 @@ export const loginStyle = colors =>
     headerCont: {
       marginTop: rs(40),
       marginBottom: rs(20),
-      flexDirection: 'column',
       alignItems: 'center',
     },
     welcomeText: {
@@ -44,5 +43,32 @@ export const loginStyle = colors =>
       fontFamily: 'Inter-SemiBold',
       fontSize: rs(15),
       lineHeight: rs(22),
+    },
+    forget: {
+      marginTop: rs(24),
+      textAlign: 'center',
+      color: colors.olympicBlue,
+      fontFamily: 'Inter-SemiBold',
+      lineHeight: rs(20),
+      textDecorationLine: 'underline',
+      textDecorationStyle: 'solid',
+      textDecorationColor: colors.olympicBlue,
+    },
+    logInTextCont: {
+      flexDirection: 'row',
+      marginTop: rs(100),
+      alignItems: 'center',
+    },
+    underLine: {
+      width: rs(70),
+      height: 0.5,
+      backgroundColor: colors.foil,
+    },
+    loginText: {
+      fontFamily: 'Inter-Regular',
+      fontSize: rs(14),
+      lineHeight: rs(20),
+      color: colors.distantThunder,
+      paddingHorizontal: rs(13),
     },
   });
