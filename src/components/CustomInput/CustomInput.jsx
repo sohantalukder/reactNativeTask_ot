@@ -1,6 +1,6 @@
 import {TextInput, View} from 'react-native';
 import React, {useState} from 'react';
-import {customInputStyle} from './customInputStyle';
+import {customInputStyle} from './customInput.Style';
 import {useTheme} from '@react-navigation/native';
 import {rs} from '../../utils/responsiveSize/responsiveSize';
 

@@ -35,4 +35,14 @@ export const loginStyle = colors =>
       textTransform: 'uppercase',
       letterSpacing: rs(-0.75),
     },
+    btnContStyle: {
+      width: width - rs(80),
+      marginTop: rs(16),
+    },
+    btnTextStyle: {
+      color: colors.white,
+      fontFamily: 'Inter-SemiBold',
+      fontSize: rs(15),
+      lineHeight: rs(22),
+    },
   });
