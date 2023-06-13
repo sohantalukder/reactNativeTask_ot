@@ -12,5 +12,6 @@ export const colors = {
     foil: '#C0C2C4',
     cyberspace: '#43494D',
     blueRibbon: '#0066FF',
+    windchill: '#D5D7D7',
   },
 };

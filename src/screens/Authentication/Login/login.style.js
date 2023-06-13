@@ -38,6 +38,17 @@ export const loginStyle = colors =>
       width: width - rs(80),
       marginTop: rs(16),
     },
+    socialCont: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: width - rs(80),
+    },
+    btnOutLineContStyle: {
+      width: width / 2.65,
+      borderWidth: 1.3,
+      marginTop: rs(20),
+      borderColor: colors.windchill,
+    },
     btnTextStyle: {
       color: colors.white,
       fontFamily: 'Inter-SemiBold',

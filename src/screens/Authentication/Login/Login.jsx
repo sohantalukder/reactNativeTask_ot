@@ -18,7 +18,8 @@ import Eye from '../../../assets/svg/Eye.svg';
 import {rs} from '../../../utils/responsiveSize/responsiveSize';
 import CustomButton from '../../../components/CustomButton/CustomButton';
 import {BOTTOM_TAB} from '../../../navigation/RouteName/RouteName';
-
+import Google from '../../../assets/svg/Google.svg';
+import FaceBook from '../../../assets/svg/Facebook.svg';
 const Login = () => {
   const {colors} = useTheme();
   const styles = loginStyle(colors);
@@ -35,6 +36,7 @@ const Login = () => {
     colors.olympicBlue,
     colors.olympicBlue,
   ];
+  const linearColorW = [colors.white, colors.white, colors.white];
   const handleChange = (name, value) => {
     setFormData(prevState => ({...prevState, [name]: value}));
   };
@@ -84,6 +86,18 @@ const Login = () => {
               <View style={styles.underLine}></View>
               <Text style={styles.loginText}>Or, Log in with</Text>
               <View style={styles.underLine}></View>
+            </View>
+            <View style={styles.socialCont}>
+              <CustomButton
+                linearColor={linearColorW}
+                btnContStyle={styles.btnOutLineContStyle}
+                icon={<Google />}
+              />
+              <CustomButton
+                linearColor={linearColorW}
+                btnContStyle={styles.btnOutLineContStyle}
+                icon={<FaceBook />}
+              />
             </View>
           </View>
         </TouchableWithoutFeedback>
