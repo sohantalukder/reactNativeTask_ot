@@ -4,13 +4,15 @@ import {useTheme} from '@react-navigation/native';
 import Lists from './Lists';
 import {dashboardStyle} from './dashboard.style';
 
-const BrandLists = () => {
+const BrandLists = ({deletedList = false, lists = []}) => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
   return (
     <View style={styles.brandListCont}>
-      <Text style={styles.tittleText}>Top street-style brands</Text>
-      <Lists />
+      {!deletedList && (
+        <Text style={styles.tittleText}>Top street-style brands</Text>
+      )}
+      <Lists lists={lists} deletedList={deletedList} />
     </View>
   );
 };

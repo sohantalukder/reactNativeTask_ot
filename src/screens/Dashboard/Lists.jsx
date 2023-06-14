@@ -4,10 +4,13 @@ import demoData from '../../../demoData/demoData.json';
 import Card from '../../components/Card/Card';
 import {useTheme} from '@react-navigation/native';
 import {dashboardStyle} from './dashboard.style';
-const Lists = () => {
+const Lists = ({deletedList = false, lists = []}) => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
-  const memorizeList = useCallback(({item}) => <Card item={item} />, []);
+  const memorizeList = useCallback(
+    ({item}) => <Card deletedList={deletedList} item={item} />,
+    [],
+  );
   const renderEmptyComponent = () => (
     <View style={styles.emptyListCont}>
       <Text style={styles.emptyText}>No Lists available</Text>
@@ -16,7 +19,7 @@ const Lists = () => {
   return (
     <>
       <FlatList
-        data={demoData?.items}
+        data={lists}
         keyExtractor={(_, i) => i}
         renderItem={memorizeList}
         showsVerticalScrollIndicator={false}

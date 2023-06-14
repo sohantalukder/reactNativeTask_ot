@@ -7,6 +7,25 @@ export const dashboardStyle = colors =>
       flex: 1,
       backgroundColor: colors.antiFlashWhite,
     },
+    headerCont: {
+      backgroundColor: colors.white,
+      paddingHorizontal: rs(20),
+      paddingVertical: rs(16),
+    },
+    headerTextCont: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: rs(20),
+    },
+    headerText: {
+      fontFamily: 'Futura-ExtraBold',
+      fontSize: rs(32),
+      lineHeight: rs(36),
+      letterSpacing: -0.75,
+      color: colors.dark,
+      textTransform: 'uppercase',
+    },
     brandListCont: {marginTop: rs(25), flex: 1, paddingHorizontal: rs(20)},
     tittleText: {
       fontFamily: 'Inter-SemiBold',

@@ -5,7 +5,7 @@ import CustomButton from '../CustomButton/CustomButton';
 import {cardStyle} from './card.style';
 import Action from '../Action/Action';
 import CustomModal from '../CustomModal/CustomModal';
-const Card = ({item = {}}) => {
+const Card = ({item = {}, deletedList = false}) => {
   const {colors} = useTheme();
   const [openModal, setOpenModal] = useState(false);
   const styles = cardStyle(colors);
@@ -17,7 +17,7 @@ const Card = ({item = {}}) => {
   return (
     <>
       <View style={styles.cardCont}>
-        <Action handleModal={handleModal} />
+        {!deletedList && <Action handleModal={handleModal} />}
         <Image source={{uri: image}} style={styles.image} />
         <Text style={styles.tittleText}>{name}</Text>
         <Text style={styles.followers}>{followers}</Text>
@@ -28,7 +28,7 @@ const Card = ({item = {}}) => {
           btnTextStyle={cardStyle(colors, following).btnText}
         />
       </View>
-      {openModal && (
+      {openModal && !deletedList && (
         <CustomModal handleModal={handleModal} openModal={openModal} />
       )}
     </>
