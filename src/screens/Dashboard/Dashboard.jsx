@@ -1,11 +1,18 @@
-import {View, Text} from 'react-native';
+import {View, Text, KeyboardAvoidingView, Platform} from 'react-native';
 import React from 'react';
+import DashboardHeader from './DashboardHeader';
+import {dashboardStyle} from './dashboard.style';
+import {useTheme} from '@react-navigation/native';
 
 const Dashboard = () => {
+  const {colors} = useTheme();
+  const styles = dashboardStyle(colors);
   return (
-    <View>
-      <Text>Dashboard</Text>
-    </View>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS == 'ios' ? 'padding' : ''}>
+      <DashboardHeader />
+    </KeyboardAvoidingView>
   );
 };
 
