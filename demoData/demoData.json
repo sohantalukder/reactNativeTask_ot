@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "name": "Admin",
+      "id": 1
+    },
+    {
+      "email": "user@gmail.com",
+      "password": "123456",
+      "name": "User",
+      "id": 2
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "image": "https://images.pexels.com/photos/12428373/pexels-photo-12428373.jpeg?auto=compress&cs=tinysrgb&w=240&h=180&dpr=1",
+      "name": "Balenciaga",
+      "description": "Ecommerce is big and getting bigger. ",
+      "following": 0,
+      "followers": "102k Followers"
+    },
+    {
+      "id": 2,
+      "name": "H&M",
+      "image": "https://images.pexels.com/photos/296492/pexels-photo-296492.jpeg?auto=compress&cs=tinysrgb&w=240&h=180&dpr=1",
+      "description": "Turn features into benefits",
+      "following": 1,
+      "followers": "35K Followers"
+    },
+    {
+      "id": 3,
+      "name": "Zara",
+      "image": "https://images.pexels.com/photos/9560606/pexels-photo-9560606.jpeg?auto=compress&cs=tinysrgb&w=240&h=180&dpr=1",
+      "description": "In product descriptions, it’s easy to fall into the trap of only describing the features of your products. ",
+      "following": 0,
+      "followers": "106K Followers"
+    },
+    {
+      "id": 4,
+      "name": "Apple",
+      "image": "https://images.pexels.com/photos/434346/pexels-photo-434346.jpeg?auto=compress&cs=tinysrgb&w=240&h=180&dpr=1",
+      "description": "Now, think about what those things do for your customer. Does careful construction mean that your product is safe for children?",
+      "following": 1,
+      "followers": "35K Followers"
+    },
+    {
+      "id": 3,
+      "name": "Zara",
+      "image": "https://images.pexels.com/photos/9560606/pexels-photo-9560606.jpeg?auto=compress&cs=tinysrgb&w=240&h=180&dpr=1",
+      "description": "In product descriptions, it’s easy to fall into the trap of only describing the features of your products. ",
+      "following": 0,
+      "followers": "106K Followers"
+    },
+    {
+      "id": 4,
+      "name": "Apple",
+      "image": "https://images.pexels.com/photos/434346/pexels-photo-434346.jpeg?auto=compress&cs=tinysrgb&w=240&h=180&dpr=1",
+      "description": "Now, think about what those things do for your customer. Does careful construction mean that your product is safe for children?",
+      "following": 1,
+      "followers": "35K Followers"
+    }
+  ]
+}

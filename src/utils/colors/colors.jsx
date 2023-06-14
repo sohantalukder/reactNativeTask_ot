@@ -13,5 +13,6 @@ export const colors = {
     cyberspace: '#43494D',
     blueRibbon: '#0066FF',
     windchill: '#D5D7D7',
+    lightBlue: '#EEF5FC',
   },
 };

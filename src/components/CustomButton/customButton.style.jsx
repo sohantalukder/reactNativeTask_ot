@@ -1,7 +1,7 @@
 const {StyleSheet} = require('react-native');
 const {rs} = require('../../utils/responsiveSize/responsiveSize');
 
-export const customButtonStyle = () =>
+export const customButtonStyle = colors =>
   StyleSheet.create({
     btnContainer: {
       justifyContent: 'center',
@@ -14,5 +14,6 @@ export const customButtonStyle = () =>
       fontWeight: '600',
       fontSize: rs(15),
       lineHeight: rs(22),
+      color: colors.white,
     },
   });

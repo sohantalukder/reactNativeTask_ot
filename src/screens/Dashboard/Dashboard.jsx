@@ -3,6 +3,7 @@ import React from 'react';
 import DashboardHeader from './DashboardHeader';
 import {dashboardStyle} from './dashboard.style';
 import {useTheme} from '@react-navigation/native';
+import BrandLists from './BrandLists';
 
 const Dashboard = () => {
   const {colors} = useTheme();
@@ -12,6 +13,7 @@ const Dashboard = () => {
       style={styles.container}
       behavior={Platform.OS == 'ios' ? 'padding' : ''}>
       <DashboardHeader />
+      <BrandLists />
     </KeyboardAvoidingView>
   );
 };

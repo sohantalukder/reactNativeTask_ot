@@ -31,11 +31,6 @@ const Login = () => {
   const [formData, setFormData] = useState(initialState);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
-  const linearColor = [
-    colors.olympicBlue,
-    colors.olympicBlue,
-    colors.olympicBlue,
-  ];
   const linearColorW = [colors.white, colors.white, colors.white];
   const handleChange = (name, value) => {
     setFormData(prevState => ({...prevState, [name]: value}));
@@ -76,7 +71,6 @@ const Login = () => {
             {error && <Text>{error}</Text>}
             <CustomButton
               text={loading ? 'Loading...' : 'Log In'}
-              linearColor={linearColor}
               btnContStyle={styles.btnContStyle}
               btnTextStyle={styles.btnTextStyle}
               onPress={handleLogin}
