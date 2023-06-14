@@ -5,7 +5,7 @@ import CustomButton from '../CustomButton/CustomButton';
 import {cardStyle} from './card.style';
 import Action from '../Action/Action';
 import CustomModal from '../CustomModal/CustomModal';
-const Card = ({item = {}, deletedList = false}) => {
+const Card = ({item = {}, deletedList = false, openBottomSheet}) => {
   const {colors} = useTheme();
   const [openModal, setOpenModal] = useState(false);
   const styles = cardStyle(colors);

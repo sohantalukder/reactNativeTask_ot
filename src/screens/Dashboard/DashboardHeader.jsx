@@ -6,7 +6,11 @@ import {rs} from '../../utils/responsiveSize/responsiveSize';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import SearchIcon from '../../assets/svg/Search.svg';
 import {dashboardStyle} from './dashboard.style';
-const DashboardHeader = ({deletedList = false, headerText = ''}) => {
+const DashboardHeader = ({
+  deletedList = false,
+  headerText = '',
+  openBottomSheet,
+}) => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
   return (
@@ -14,13 +18,17 @@ const DashboardHeader = ({deletedList = false, headerText = ''}) => {
       <View style={styles.headerTextCont}>
         <Text style={styles.headerText}>{headerText}</Text>
         {!deletedList && (
-          <Pressable>
+          <Pressable onPress={openBottomSheet} style={styles.addList}>
             <AddIcon height={rs(28)} width={rs(28)} />
           </Pressable>
         )}
       </View>
       {!deletedList && (
-        <CustomInput leftIcon={<SearchIcon />} placeholder="Search here..." />
+        <CustomInput
+          leftIcon={<SearchIcon />}
+          style={styles.inputWidth}
+          placeholder="Search here..."
+        />
       )}
     </View>
   );

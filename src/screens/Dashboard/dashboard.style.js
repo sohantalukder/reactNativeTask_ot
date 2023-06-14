@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {rs} from '../../utils/responsiveSize/responsiveSize';
-
+const {width} = Dimensions.get('screen');
 export const dashboardStyle = colors =>
   StyleSheet.create({
     container: {
@@ -9,7 +9,6 @@ export const dashboardStyle = colors =>
     },
     headerCont: {
       backgroundColor: colors.white,
-      paddingHorizontal: rs(20),
       paddingVertical: rs(16),
     },
     headerTextCont: {
@@ -17,6 +16,11 @@ export const dashboardStyle = colors =>
       justifyContent: 'space-between',
       alignItems: 'center',
       marginBottom: rs(20),
+      marginLeft: rs(20),
+    },
+    inputWidth: {
+      width: width - rs(40),
+      alignSelf: 'center',
     },
     headerText: {
       fontFamily: 'Futura-ExtraBold',
@@ -48,4 +52,5 @@ export const dashboardStyle = colors =>
       justifyContent: 'space-between',
       marginBottom: rs(8),
     },
+    addList: {padding: rs(10), marginRight: rs(10)},
   });

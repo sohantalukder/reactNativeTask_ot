@@ -28,7 +28,7 @@ const CustomButton = ({
         {typeof icon === 'object' ? (
           icon
         ) : (
-          <View>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
             {textIcon}
             <Text style={[styles.btnText, btnTextStyle]}>{text}</Text>
           </View>

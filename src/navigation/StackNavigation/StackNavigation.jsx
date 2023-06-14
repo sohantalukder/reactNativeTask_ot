@@ -15,6 +15,7 @@ const StackNavigation = () => {
     <Stack.Navigator
       initialRouteName={user ? BOTTOM_TAB : LOGIN}
       screenOptions={{
+        animation: 'slide_from_right',
         headerShown: false,
         animationDuration: 400,
       }}>
