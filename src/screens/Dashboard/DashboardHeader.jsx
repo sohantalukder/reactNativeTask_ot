@@ -9,7 +9,7 @@ import {dashboardStyle} from './dashboard.style';
 const DashboardHeader = ({
   deletedList = false,
   headerText = '',
-  openBottomSheet,
+  handleBottomSheet,
 }) => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
@@ -18,7 +18,7 @@ const DashboardHeader = ({
       <View style={styles.headerTextCont}>
         <Text style={styles.headerText}>{headerText}</Text>
         {!deletedList && (
-          <Pressable onPress={openBottomSheet} style={styles.addList}>
+          <Pressable onPress={handleBottomSheet} style={styles.addList}>
             <AddIcon height={rs(28)} width={rs(28)} />
           </Pressable>
         )}

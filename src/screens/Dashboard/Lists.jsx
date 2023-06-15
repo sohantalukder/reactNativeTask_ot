@@ -4,7 +4,7 @@ import demoData from '../../../demoData/demoData.json';
 import Card from '../../components/Card/Card';
 import {useTheme} from '@react-navigation/native';
 import {dashboardStyle} from './dashboard.style';
-const Lists = ({deletedList = false, lists = [], openBottomSheet}) => {
+const Lists = ({deletedList = false, lists = [], handleBottomSheet}) => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
   const memorizeList = useCallback(
@@ -12,7 +12,7 @@ const Lists = ({deletedList = false, lists = [], openBottomSheet}) => {
       <Card
         deletedList={deletedList}
         item={item}
-        openBottomSheet={openBottomSheet}
+        handleBottomSheet={handleBottomSheet}
       />
     ),
     [],

@@ -12,8 +12,8 @@ export const actionStyle = colors =>
     },
     text: {
       color: colors.draculaOrchid,
+      fontFamily: 'Inter-SemiBold',
       fontSize: rs(16),
-      fontWeight: '900',
       lineHeight: rs(6),
     },
   });

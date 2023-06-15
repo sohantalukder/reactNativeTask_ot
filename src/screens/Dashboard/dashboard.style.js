@@ -53,4 +53,15 @@ export const dashboardStyle = colors =>
       marginBottom: rs(8),
     },
     addList: {padding: rs(10), marginRight: rs(10)},
+    bottomSheetCont: {flex: 1, paddingHorizontal: rs(20)},
+    titleText: {
+      fontFamily: 'Inter-SemiBold',
+      fontSize: rs(22),
+      lineHeight: rs(28),
+      color: colors.dark,
+    },
+    mt_16: {marginTop: rs(16)},
+    areaField: {height: rs(140), marginTop: rs(16)},
+    btnTextStyle: {marginLeft: rs(11)},
+    btnContStyle: {marginVertical: rs(16)},
   });

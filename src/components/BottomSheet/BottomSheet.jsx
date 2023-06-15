@@ -1,21 +1,18 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {
-  Animated,
-  Dimensions,
-  Pressable,
-  StyleSheet,
-  View,
-  Text,
-} from 'react-native';
+import {Animated, Dimensions, Pressable, View} from 'react-native';
 import {PanGestureHandler} from 'react-native-gesture-handler';
 import Arrow from '../../assets/svg/Left Arrow.svg';
-import {rs} from '../../utils/responsiveSize/responsiveSize';
 import {useTheme} from '@react-navigation/native';
 import {bottomSheetStyle} from './bottomSheet.style';
 
-const BottomSheet = ({show, onDismiss, enableBackdropDismiss, children}) => {
-  const bottomSheetHeight = Dimensions.get('window').height * 0.52;
-  const deviceWidth = Dimensions.get('window').width;
+const BottomSheet = ({
+  show,
+  onDismiss,
+  enableBackdropDismiss = true,
+  children,
+}) => {
+  const bottomSheetHeight = Dimensions.get('screen').height * 0.6;
+  const deviceWidth = Dimensions.get('screen').width;
   const [open, setOpen] = useState(show);
   const bottom = useRef(new Animated.Value(-bottomSheetHeight)).current;
   const {colors} = useTheme();

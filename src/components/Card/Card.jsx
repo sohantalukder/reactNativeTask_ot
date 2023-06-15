@@ -5,7 +5,7 @@ import CustomButton from '../CustomButton/CustomButton';
 import {cardStyle} from './card.style';
 import Action from '../Action/Action';
 import CustomModal from '../CustomModal/CustomModal';
-const Card = ({item = {}, deletedList = false, openBottomSheet}) => {
+const Card = ({item = {}, deletedList = false, handleBottomSheet}) => {
   const {colors} = useTheme();
   const [openModal, setOpenModal] = useState(false);
   const styles = cardStyle(colors);
@@ -29,7 +29,11 @@ const Card = ({item = {}, deletedList = false, openBottomSheet}) => {
         />
       </View>
       {openModal && !deletedList && (
-        <CustomModal handleModal={handleModal} openModal={openModal} />
+        <CustomModal
+          handleModal={handleModal}
+          openModal={openModal}
+          handleBottomSheet={handleBottomSheet}
+        />
       )}
     </>
   );

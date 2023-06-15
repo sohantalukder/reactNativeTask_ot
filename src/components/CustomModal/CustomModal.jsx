@@ -17,13 +17,13 @@ const CustomModal = ({handleModal, openModal}) => {
           <View style={styles.modalView}>
             <CustomButton
               text={'Update Modal'}
-              onPress={handleModal}
+              onPress={() => handleModal('update')}
               btnContStyle={[styles.btnCont, {marginBottom: rs(10)}]}
               btnTextStyle={cardStyle(colors, following2).btnText}
             />
             <CustomButton
               text={'Delete Modal'}
-              onPress={handleModal}
+              onPress={() => handleModal('delete')}
               btnContStyle={styles.btnCont}
               linearColor={linearColor}
               btnTextStyle={cardStyle(colors, following).btnText}
