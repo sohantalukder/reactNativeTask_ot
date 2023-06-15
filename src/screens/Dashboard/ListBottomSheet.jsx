@@ -61,7 +61,11 @@ const AddListBottomSheet = () => {
   );
 
   return (
-    <BottomSheet show={show} onDismiss={handleBottomSheet}>
+    <BottomSheet
+      show={show}
+      onDismiss={() => {
+        handleBottomSheet(), setUpdateData({}), setAddList(initialState);
+      }}>
       <View style={styles.bottomSheetCont}>
         <Text style={styles.titleText}>
           {updateData?.id ? 'Update Collection' : 'Create New Collection'}
@@ -70,13 +74,13 @@ const AddListBottomSheet = () => {
           placeholder="Image Link"
           onChangeText={text => handleChange('image', text)}
           style={styles.mt_16}
-          value={updateData?.id ? updateData?.image : addList.image}
+          value={updateData?.image ? updateData?.image : addList.image}
         />
         <CustomInput
           placeholder="Collection Name"
           onChangeText={text => handleChange('name', text)}
           style={styles.mt_16}
-          value={updateData?.id ? updateData?.name : addList.name}
+          value={updateData?.name ? updateData?.name : addList.name}
         />
         <CustomInput
           placeholder="Description"
@@ -84,7 +88,11 @@ const AddListBottomSheet = () => {
           multiline={true}
           onChangeText={text => handleChange('description', text)}
           style={styles.areaField}
-          value={updateData?.id ? updateData?.description : addList.description}
+          value={
+            updateData?.description
+              ? updateData?.description
+              : addList.description
+          }
           textAlignVertical={'top'}
         />
         <CustomButton

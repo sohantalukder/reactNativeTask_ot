@@ -15,6 +15,7 @@ const useProvider = () => {
   const [addList, setAddList] = useState(initialState);
   const [user, setUser] = useState({});
   const [updateData, setUpdateData] = useState({});
+  const [deletedLists, setDeletedLists] = useState([]);
   const [show, setShow] = useState(false);
   const handleBottomSheet = () => {
     setShow(!show);
@@ -25,9 +26,13 @@ const useProvider = () => {
       setLoading(true);
       setTimeout(async () => {
         const listFromStorage = await getData('list');
+        const deletedFromStorage = await getData('deletedList');
         const parseList = JSON.parse(listFromStorage);
+        const parseDList = JSON.parse(deletedFromStorage);
         const listData = parseList?.length > 0 ? parseList : db.lists;
+        const listDData = parseDList?.length > 0 ? parseDList : [];
         setLists(listData);
+        setDeletedLists(listDData);
         setLoading(false);
       }, 4000);
     }
@@ -49,6 +54,8 @@ const useProvider = () => {
     updateData,
     setUpdateData,
     initialState,
+    deletedLists,
+    setDeletedLists,
   };
 };
 

@@ -12,6 +12,14 @@ export const cardStyle = (colors, following) =>
       position: 'relative',
       backgroundColor: colors.white,
     },
+    actionBtn: {
+      position: 'absolute',
+      right: 0,
+      width: rs(50),
+      height: rs(50),
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     image: {
       height: rs(96),
       width: rs(96),
