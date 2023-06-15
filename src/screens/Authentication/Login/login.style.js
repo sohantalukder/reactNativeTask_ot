@@ -82,4 +82,12 @@ export const loginStyle = colors =>
       color: colors.distantThunder,
       paddingHorizontal: rs(13),
     },
+    errorText: {
+      fontFamily: 'Inter-Medium',
+      fontSize: rs(14),
+      lineHeight: rs(16),
+      color: colors.dark,
+      textAlign: 'left',
+      marginTop: rs(15),
+    },
   });

@@ -1,10 +1,15 @@
-import {View, Text} from 'react-native';
+import {View, Text, ActivityIndicator} from 'react-native';
 import React from 'react';
 import {useTheme} from '@react-navigation/native';
 import Lists from './Lists';
 import {dashboardStyle} from './dashboard.style';
 
-const BrandLists = ({deletedList = false, lists = [], handleBottomSheet}) => {
+const BrandLists = ({
+  deletedList = false,
+  lists = [],
+  loading,
+  handleBottomSheet,
+}) => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
   return (
@@ -12,11 +17,15 @@ const BrandLists = ({deletedList = false, lists = [], handleBottomSheet}) => {
       {!deletedList && (
         <Text style={styles.tittleText}>Top street-style brands</Text>
       )}
-      <Lists
-        handleBottomSheet={handleBottomSheet}
-        lists={lists}
-        deletedList={deletedList}
-      />
+      {loading ? (
+        <ActivityIndicator />
+      ) : (
+        <Lists
+          handleBottomSheet={handleBottomSheet}
+          lists={lists}
+          deletedList={deletedList}
+        />
+      )}
     </View>
   );
 };

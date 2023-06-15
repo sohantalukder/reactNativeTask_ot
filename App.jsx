@@ -13,10 +13,18 @@ import {NavigationContainer} from '@react-navigation/native';
 import {colors} from './src/utils/colors/colors';
 import SplashScreen from 'react-native-splash-screen';
 import StackNavigation from './src/navigation/StackNavigation/StackNavigation';
+import {getData} from './src/utils/storage/storage';
+import useProviderData from './src/hooks/useProviderData';
 
 const App = () => {
+  const {setUser} = useProviderData();
   useEffect(() => {
     SplashScreen.hide();
+    async function getDataFromStorage() {
+      let auth = await getData('auth');
+      setUser(JSON.parse(auth));
+    }
+    getDataFromStorage();
   }, []);
   return (
     <SafeAreaProvider>

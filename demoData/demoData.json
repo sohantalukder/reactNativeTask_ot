@@ -4,12 +4,14 @@
       "email": "admin@gmail.com",
       "password": "123456",
       "name": "Admin",
+      "type": "admin",
       "id": 1
     },
     {
       "email": "user@gmail.com",
       "password": "123456",
       "name": "User",
+      "type": "user",
       "id": 2
     }
   ],

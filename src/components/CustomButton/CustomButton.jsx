@@ -12,6 +12,7 @@ const CustomButton = ({
   onPress,
   icon,
   textIcon,
+  disabled = false,
 }) => {
   const {colors} = useTheme();
   const styles = customButtonStyle(colors);
@@ -21,7 +22,7 @@ const CustomButton = ({
     colors.olympicBlue,
   ];
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} disabled={disabled}>
       <LinearGradient
         colors={linearColor ? linearColor : gradientColor}
         style={[styles.btnContainer, btnContStyle]}>

@@ -1,19 +1,17 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-// import useListData from '../hooks/useListData';
 import {BOTTOM_TAB, LOGIN} from '../RouteName/RouteName';
 import Login from '../../screens/Authentication/Login/Login';
 import BottomTabNavigation from '../BottomTab/BottomTabNavigation';
+import useProviderData from '../../hooks/useProviderData';
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
-  //   const {user} = useListData();
-  const user = '';
+  const {user} = useProviderData();
   return (
     <Stack.Navigator
-      initialRouteName={user ? BOTTOM_TAB : LOGIN}
+      initialRouteName={user?.email ? BOTTOM_TAB : LOGIN}
       screenOptions={{
         animation: 'slide_from_right',
         headerShown: false,

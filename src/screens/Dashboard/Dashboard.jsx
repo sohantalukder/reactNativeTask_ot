@@ -4,15 +4,12 @@ import DashboardHeader from './DashboardHeader';
 import {dashboardStyle} from './dashboard.style';
 import {useTheme} from '@react-navigation/native';
 import BrandLists from './BrandLists';
-import demoData from '../../../demoData/demoData.json';
 import AddListBottomSheet from './ListBottomSheet';
+import useProvider from '../../hooks/useProvider';
 const Dashboard = () => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
-  const [show, setShow] = useState(false);
-  const handleBottomSheet = () => {
-    setShow(!show);
-  };
+  const {lists, loading, show, handleBottomSheet} = useProvider();
   const [loadSheet, setLoadSheet] = useState(false);
   useEffect(() => {
     setTimeout(() => {
@@ -31,7 +28,8 @@ const Dashboard = () => {
       {loadSheet && (
         <>
           <BrandLists
-            lists={demoData?.lists}
+            loading={loading}
+            lists={lists}
             openBottomSheet={handleBottomSheet}
           />
           <AddListBottomSheet

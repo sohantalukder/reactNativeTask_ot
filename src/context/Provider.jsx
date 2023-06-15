@@ -1,11 +1,15 @@
 import React, {createContext} from 'react';
-import useLists from '../hooks/useLists';
+import useProvider from '../hooks/useProvider';
 
-export const ListContext = createContext(null);
+export const ProviderContext = createContext(null);
 
 const Provider = ({children}) => {
-  const lists = useLists();
-  return <ListContext.Provider value={lists}>{children}</ListContext.Provider>;
+  const lists = useProvider();
+  return (
+    <ProviderContext.Provider value={lists}>
+      {children}
+    </ProviderContext.Provider>
+  );
 };
 
 export default Provider;

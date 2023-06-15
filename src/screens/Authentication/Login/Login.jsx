@@ -20,6 +20,9 @@ import CustomButton from '../../../components/CustomButton/CustomButton';
 import {BOTTOM_TAB} from '../../../navigation/RouteName/RouteName';
 import Google from '../../../assets/svg/Google.svg';
 import FaceBook from '../../../assets/svg/Facebook.svg';
+import db from '../../../../demoData/demoData.json';
+import useProvider from '../../../hooks/useProvider';
+import {storeData} from '../../../utils/storage/storage';
 const Login = () => {
   const {colors} = useTheme();
   const styles = loginStyle(colors);
@@ -28,6 +31,7 @@ const Login = () => {
     email: '',
     password: '',
   };
+  const {setUser} = useProvider();
   const [formData, setFormData] = useState(initialState);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
@@ -36,7 +40,29 @@ const Login = () => {
     setFormData(prevState => ({...prevState, [name]: value}));
   };
   const handleLogin = () => {
-    navigation.navigate(BOTTOM_TAB);
+    const {email, password} = formData;
+    if (!email || !password) return;
+    setLoading(true);
+    Keyboard.dismiss();
+    new Promise(resolve => setTimeout(resolve, 2000))
+      .then(async () => {
+        const getUser = db.users.find(
+          user => user.email === email && user.password === password,
+        );
+        setLoading(false);
+        if (getUser?.email) {
+          setError('');
+          setUser(getUser);
+          setFormData(initialState);
+          await storeData('auth', getUser);
+          navigation.navigate(BOTTOM_TAB);
+        } else {
+          setError('Invalid Credentials');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
   return (
     <KeyboardAvoidingView
@@ -68,12 +94,13 @@ const Login = () => {
               value={formData.password}
               placeholder="Password"
             />
-            {error && <Text>{error}</Text>}
+            {error && <Text style={styles.errorText}>{error}</Text>}
             <CustomButton
               text={loading ? 'Loading...' : 'Log In'}
               btnContStyle={styles.btnContStyle}
               btnTextStyle={styles.btnTextStyle}
               onPress={handleLogin}
+              disabled={error || loading ? true : false}
             />
             <Text style={styles.forget}>Forget Password?</Text>
             <View style={styles.logInTextCont}>
