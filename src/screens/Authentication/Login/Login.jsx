@@ -21,8 +21,8 @@ import {BOTTOM_TAB} from '../../../navigation/RouteName/RouteName';
 import Google from '../../../assets/svg/Google.svg';
 import FaceBook from '../../../assets/svg/Facebook.svg';
 import db from '../../../../demoData/demoData.json';
-import useProvider from '../../../hooks/useProvider';
 import {storeData} from '../../../utils/storage/storage';
+import useProviderData from '../../../hooks/useProviderData';
 const Login = () => {
   const {colors} = useTheme();
   const styles = loginStyle(colors);
@@ -31,7 +31,7 @@ const Login = () => {
     email: '',
     password: '',
   };
-  const {setUser} = useProvider();
+  const {setUser} = useProviderData();
   const [formData, setFormData] = useState(initialState);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
