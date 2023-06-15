@@ -5,11 +5,11 @@ import {dashboardStyle} from './dashboard.style';
 import {useTheme} from '@react-navigation/native';
 import BrandLists from './BrandLists';
 import AddListBottomSheet from './ListBottomSheet';
-import useProvider from '../../hooks/useProvider';
+import useProviderData from '../../hooks/useProviderData';
 const Dashboard = () => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
-  const {lists, loading, show, handleBottomSheet} = useProvider();
+  const {lists, loading} = useProviderData();
   const [loadSheet, setLoadSheet] = useState(false);
   useEffect(() => {
     setTimeout(() => {
@@ -21,21 +21,11 @@ const Dashboard = () => {
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS == 'ios' ? 'padding' : ''}>
-      <DashboardHeader
-        headerText="Explore"
-        handleBottomSheet={handleBottomSheet}
-      />
+      <DashboardHeader headerText="Explore" />
       {loadSheet && (
         <>
-          <BrandLists
-            loading={loading}
-            lists={lists}
-            openBottomSheet={handleBottomSheet}
-          />
-          <AddListBottomSheet
-            show={show}
-            handleBottomSheet={handleBottomSheet}
-          />
+          <BrandLists loading={loading} lists={lists} />
+          <AddListBottomSheet />
         </>
       )}
     </KeyboardAvoidingView>

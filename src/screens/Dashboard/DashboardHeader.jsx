@@ -6,11 +6,9 @@ import {rs} from '../../utils/responsiveSize/responsiveSize';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import SearchIcon from '../../assets/svg/Search.svg';
 import {dashboardStyle} from './dashboard.style';
-const DashboardHeader = ({
-  deletedList = false,
-  headerText = '',
-  handleBottomSheet,
-}) => {
+import useProviderData from '../../hooks/useProviderData';
+const DashboardHeader = ({deletedList = false, headerText = ''}) => {
+  const {handleBottomSheet} = useProviderData();
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
   return (

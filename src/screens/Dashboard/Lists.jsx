@@ -1,20 +1,13 @@
 import {View, Text, FlatList} from 'react-native';
 import React, {useCallback} from 'react';
-import demoData from '../../../demoData/demoData.json';
 import Card from '../../components/Card/Card';
 import {useTheme} from '@react-navigation/native';
 import {dashboardStyle} from './dashboard.style';
-const Lists = ({deletedList = false, lists = [], handleBottomSheet}) => {
+const Lists = ({deletedList = false, lists = []}) => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
   const memorizeList = useCallback(
-    ({item}) => (
-      <Card
-        deletedList={deletedList}
-        item={item}
-        handleBottomSheet={handleBottomSheet}
-      />
-    ),
+    ({item}) => <Card deletedList={deletedList} item={item} />,
     [],
   );
   const renderEmptyComponent = () => (

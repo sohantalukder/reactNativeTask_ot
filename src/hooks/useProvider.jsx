@@ -5,14 +5,16 @@ const initialState = {
   name: '',
   image: '',
   description: '',
+  following: 0,
+  followers: '102k Followers',
 };
 
 const useProvider = () => {
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [addData, setAddList] = useState(initialState);
+  const [addList, setAddList] = useState(initialState);
   const [user, setUser] = useState({});
-  const [updateLoading, setUpdateLoading] = useState(false);
+  const [updateData, setUpdateData] = useState({});
   const [show, setShow] = useState(false);
   const handleBottomSheet = () => {
     setShow(!show);
@@ -38,14 +40,15 @@ const useProvider = () => {
     lists,
     setLists,
     loading,
-    updateLoading,
-    setUpdateLoading,
-    addData,
+    addList,
     setAddList,
     user,
     setUser,
     handleBottomSheet,
     show,
+    updateData,
+    setUpdateData,
+    initialState,
   };
 };
 

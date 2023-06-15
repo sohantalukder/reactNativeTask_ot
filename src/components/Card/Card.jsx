@@ -5,19 +5,25 @@ import CustomButton from '../CustomButton/CustomButton';
 import {cardStyle} from './card.style';
 import Action from '../Action/Action';
 import CustomModal from '../CustomModal/CustomModal';
-const Card = ({item = {}, deletedList = false, handleBottomSheet}) => {
+import useProviderData from '../../hooks/useProviderData';
+const Card = ({item = {}, deletedList = false}) => {
   const {colors} = useTheme();
+  const {handleBottomSheet, setUpdateData} = useProviderData();
   const [openModal, setOpenModal] = useState(false);
   const styles = cardStyle(colors);
   const {name, image, followers, following} = item;
   const linearColor = [colors.lightBlue, colors.lightBlue, colors.lightBlue];
-  const handleModal = () => {
+  const handleModal = value => {
+    if (value === 'update') {
+      setUpdateData(item);
+      handleBottomSheet();
+    }
     setOpenModal(!openModal);
   };
   return (
     <>
       <View style={styles.cardCont}>
-        {!deletedList && <Action handleModal={handleModal} />}
+        {!deletedList && <Action handleModal={() => setOpenModal(true)} />}
         <Image source={{uri: image}} style={styles.image} />
         <Text style={styles.tittleText}>{name}</Text>
         <Text style={styles.followers}>{followers}</Text>
@@ -29,11 +35,7 @@ const Card = ({item = {}, deletedList = false, handleBottomSheet}) => {
         />
       </View>
       {openModal && !deletedList && (
-        <CustomModal
-          handleModal={handleModal}
-          openModal={openModal}
-          handleBottomSheet={handleBottomSheet}
-        />
+        <CustomModal handleModal={handleModal} openModal={openModal} />
       )}
     </>
   );

@@ -4,12 +4,7 @@ import {useTheme} from '@react-navigation/native';
 import Lists from './Lists';
 import {dashboardStyle} from './dashboard.style';
 
-const BrandLists = ({
-  deletedList = false,
-  lists = [],
-  loading,
-  handleBottomSheet,
-}) => {
+const BrandLists = ({deletedList = false, lists = [], loading}) => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
   return (
@@ -20,11 +15,7 @@ const BrandLists = ({
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Lists
-          handleBottomSheet={handleBottomSheet}
-          lists={lists}
-          deletedList={deletedList}
-        />
+        <Lists lists={lists} deletedList={deletedList} />
       )}
     </View>
   );
