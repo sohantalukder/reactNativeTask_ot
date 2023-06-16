@@ -1,19 +1,15 @@
-import {View, Text, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import React, {useCallback} from 'react';
 import Card from '../../components/Card/Card';
 import {useTheme} from '@react-navigation/native';
 import {dashboardStyle} from './dashboard.style';
+import EmptyList from '../../components/EmptyList/EmptyList';
 const Lists = ({deletedList = false, lists = []}) => {
   const {colors} = useTheme();
   const styles = dashboardStyle(colors);
   const memorizeList = useCallback(
     ({item}) => <Card deletedList={deletedList} item={item} />,
     [],
-  );
-  const renderEmptyComponent = () => (
-    <View style={styles.emptyListCont}>
-      <Text style={styles.emptyText}>No Lists available</Text>
-    </View>
   );
   return (
     <FlatList
@@ -25,7 +21,7 @@ const Lists = ({deletedList = false, lists = []}) => {
       columnWrapperStyle={styles.columnWrap}
       initialNumToRender={4}
       windowSize={10}
-      ListEmptyComponent={renderEmptyComponent}
+      ListEmptyComponent={<EmptyList text={'No Lists available'} />}
     />
   );
 };

@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import db from '../../demoData/demoData.json';
-import {getData, multiGet} from '../utils/storage/storage';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {multiGet} from '../utils/storage/storage';
 const initialState = {
   name: '',
   image: '',
@@ -26,22 +25,18 @@ const useProvider = () => {
     let isMounted = true;
     if (isMounted) {
       setLoading(true);
-      setTimeout(async () => {
-        const localStorageData = await multiGet([
-          'list',
-          'deletedList',
-          'notifications',
-        ]);
-        const parseList = JSON.parse(localStorageData[0][1]);
-        const parseDList = JSON.parse(localStorageData[1][1]);
-        const parseNotifi = JSON.parse(localStorageData[2][1]);
-        const listData = parseList?.length > 0 ? parseList : db.lists;
-        const listDData = parseDList?.length > 0 ? parseDList : [];
-        const notifeeData = parseNotifi?.length > 0 ? parseNotifi : [];
-        setLists(listData);
-        setDeletedLists(listDData);
-        setNotifications(notifeeData);
-        setLoading(false);
+      setTimeout(() => {
+        multiGet(['list', 'deletedList', 'notifications']).then(
+          ([listData, listDData, notifeeData]) => {
+            const parseList = JSON.parse(listData[1] || db);
+            const parseDList = JSON.parse(listDData[1] || '[]');
+            const parseNotifi = JSON.parse(notifeeData[1] || '[]');
+            setLists(parseList);
+            setDeletedLists(parseDList);
+            setNotifications(parseNotifi);
+            setLoading(false);
+          },
+        );
       }, 2000);
     }
     return () => {
