@@ -1,7 +1,7 @@
 Login Credential:
 
 For User:
-Email": user@gmail.com,
+Email: user@gmail.com,
 Password: 123456,
 
 For Admin:
