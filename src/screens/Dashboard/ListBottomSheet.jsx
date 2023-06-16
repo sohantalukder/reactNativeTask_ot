@@ -9,6 +9,7 @@ import Add from '../../assets/svg/Add.svg';
 import {dashboardStyle} from './dashboard.style';
 import useProviderData from '../../hooks/useProviderData';
 import {storeData} from '../../utils/storage/storage';
+import {displayNotification} from '../../utils/notification/notification';
 const AddListBottomSheet = () => {
   const {
     show,
@@ -20,6 +21,8 @@ const AddListBottomSheet = () => {
     setLists,
     updateData,
     setUpdateData,
+    notifications,
+    setNotifications,
   } = useProviderData();
   const {colors} = useTheme();
   const linearColor = [colors.dark, colors.dark, colors.dark];
@@ -30,19 +33,27 @@ const AddListBottomSheet = () => {
       ? setUpdateData({...updateData, [name]: value})
       : setAddList({...addList, [name]: value});
   };
-  const addNewList = () => {
+  const addNewList = async () => {
     const obj = {...addList, id: lists?.length + 1};
     const updatedLists = [obj, ...lists];
     setLists(updatedLists);
-    storeData('list', updatedLists);
     setAddList(initialState);
+    const updatedNotifications = [obj, ...notifications];
+    setNotifications(updatedNotifications);
+    displayNotification(`Created Successfully ${addList.name} list`);
+    storeData('list', updatedLists);
+    storeData('notifications', updatedNotifications);
     return;
   };
   const updateListData = () => {
     const foundIndex = lists.findIndex(x => x.id == updateData.id);
     lists[foundIndex] = updateData;
+    const updatedNotifications = [updateData, ...notifications];
+    setNotifications(updatedNotifications);
+    displayNotification(`Updated Successfully ${updateData.name} list`);
     setUpdateData({});
     storeData('list', lists);
+    storeData('notifications', updatedNotifications);
     return;
   };
   const handleSubmit = () => {

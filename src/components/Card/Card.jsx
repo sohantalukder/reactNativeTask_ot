@@ -7,6 +7,7 @@ import Dots from '../../assets/svg/Dots.svg';
 import CustomModal from '../CustomModal/CustomModal';
 import useProviderData from '../../hooks/useProviderData';
 import {storeData} from '../../utils/storage/storage';
+import {displayNotification} from '../../utils/notification/notification';
 const Card = ({item = {}, deletedList = false}) => {
   const {colors} = useTheme();
   const {
@@ -28,6 +29,7 @@ const Card = ({item = {}, deletedList = false}) => {
     setDeletedLists(updatedDeletedLists);
     storeData('deletedList', updatedDeletedLists);
     storeData('list', updatedLists);
+    displayNotification(`Deleted Successfully ${item.name} list`);
   };
   const handleModal = value => {
     setOpenModal(!openModal);

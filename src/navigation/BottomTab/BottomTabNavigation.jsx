@@ -4,12 +4,19 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeIcon from '../../assets/svg/Home.svg';
 import DeleteIcon from '../../assets/svg/Delete.svg';
 import ProfileIcon from '../../assets/svg/Profile.svg';
+import NotificationsIcon from '../../assets/svg/notification.svg';
 import {rs} from '../../utils/responsiveSize/responsiveSize';
-import {DASHBOARD, DELETED_LIST, PROFILE} from '../RouteName/RouteName';
+import {
+  DASHBOARD,
+  DELETED_LIST,
+  NOTIFICATION,
+  PROFILE,
+} from '../RouteName/RouteName';
 import Profile from '../../screens/Profile/Profile';
 import Dashboard from '../../screens/Dashboard/Dashboard';
 import Item from './Item/Item';
 import DeletedLists from '../../screens/DeletedLists/DeletedLists';
+import Notifications from '../../screens/Notifications/Notifications';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -60,6 +67,23 @@ const BottomTabNavigation = () => {
               <Item
                 title={'Profile'}
                 Icon={ProfileIcon}
+                focused={focused}
+                height={rs(28)}
+                width={rs(28)}
+              />
+            );
+          },
+        }}
+      />
+      <BottomTab.Screen
+        name={NOTIFICATION}
+        component={Notifications}
+        options={{
+          tabBarIcon: ({focused}) => {
+            return (
+              <Item
+                title={'Notifications'}
+                Icon={NotificationsIcon}
                 focused={focused}
                 height={rs(28)}
                 width={rs(28)}

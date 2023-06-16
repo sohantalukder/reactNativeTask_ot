@@ -16,19 +16,17 @@ const Lists = ({deletedList = false, lists = []}) => {
     </View>
   );
   return (
-    <>
-      <FlatList
-        data={lists}
-        keyExtractor={(_, i) => i}
-        renderItem={memorizeList}
-        showsVerticalScrollIndicator={false}
-        numColumns={2}
-        columnWrapperStyle={styles.columnWrap}
-        initialNumToRender={4}
-        windowSize={10}
-        ListEmptyComponent={renderEmptyComponent}
-      />
-    </>
+    <FlatList
+      data={lists}
+      keyExtractor={(_, i) => i}
+      renderItem={memorizeList}
+      showsVerticalScrollIndicator={false}
+      numColumns={2}
+      columnWrapperStyle={styles.columnWrap}
+      initialNumToRender={4}
+      windowSize={10}
+      ListEmptyComponent={renderEmptyComponent}
+    />
   );
 };
 
