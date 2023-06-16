@@ -28,9 +28,16 @@ const useProvider = () => {
       setTimeout(() => {
         multiGet(['list', 'deletedList', 'notifications']).then(
           ([listData, listDData, notifeeData]) => {
-            const parseList = JSON.parse(listData[1] || db);
-            const parseDList = JSON.parse(listDData[1] || '[]');
-            const parseNotifi = JSON.parse(notifeeData[1] || '[]');
+            const parseList =
+              JSON.parse(listData[1]) !== null
+                ? JSON.parse(listData[1])
+                : db?.lists;
+            const parseDList =
+              JSON.parse(listDData[1]) !== null ? JSON.parse(listDData[1]) : [];
+            const parseNotifi =
+              JSON.parse(notifeeData[1]) !== null
+                ? JSON.parse(notifeeData[1])
+                : [];
             setLists(parseList);
             setDeletedLists(parseDList);
             setNotifications(parseNotifi);
