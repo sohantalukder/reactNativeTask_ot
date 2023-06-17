@@ -41,7 +41,16 @@ export const cardStyle = (colors, following) =>
       fontSize: rs(12),
       lineHeight: rs(16),
       color: colors.distantThunder,
-      marginBottom: rs(16),
+    },
+    shareBtn: {
+      paddingHorizontal: rs(16),
+      paddingVertical: rs(10),
+    },
+    shareText: {
+      color: colors.blueRibbon,
+      fontFamily: 'Inter-SemiBold',
+      fontSize: rs(14),
+      lineHeight: rs(18),
     },
     btnCont: {
       height: rs(38),

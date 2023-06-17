@@ -8,6 +8,7 @@ import CustomModal from '../CustomModal/CustomModal';
 import useProviderData from '../../hooks/useProviderData';
 import {storeData} from '../../utils/storage/storage';
 import {displayNotification} from '../../utils/notification/notification';
+import {myCustomShare} from '../../utils/share/myCustomShare';
 const Card = ({item = {}, deletedList = false}) => {
   const {colors} = useTheme();
   const {
@@ -46,6 +47,7 @@ const Card = ({item = {}, deletedList = false}) => {
       ]);
     }
   };
+
   return (
     <>
       <View style={styles.cardCont}>
@@ -59,6 +61,9 @@ const Card = ({item = {}, deletedList = false}) => {
         <Image source={{uri: image}} style={styles.image} />
         <Text style={styles.tittleText}>{name}</Text>
         <Text style={styles.followers}>{followers}</Text>
+        <Pressable style={styles.shareBtn} onPress={() => myCustomShare(item)}>
+          <Text style={styles.shareText}>Share Now</Text>
+        </Pressable>
         <CustomButton
           text={following ? 'Following' : 'Follow'}
           btnContStyle={styles.btnCont}

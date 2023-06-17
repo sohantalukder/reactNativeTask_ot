@@ -23,6 +23,10 @@ import FaceBook from '../../../assets/svg/Facebook.svg';
 import db from '../../../../demoData/demoData.json';
 import {storeData} from '../../../utils/storage/storage';
 import useProviderData from '../../../hooks/useProviderData';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 const Login = () => {
   const {colors} = useTheme();
   const styles = loginStyle(colors);
@@ -63,6 +67,24 @@ const Login = () => {
       .catch(error => {
         console.log(error.message);
       });
+  };
+  GoogleSignin.configure();
+  const signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      await GoogleSignin.signOut();
+      const userInfo = await GoogleSignin.signIn();
+      const user = {
+        name: userInfo?.user?.name,
+        email: userInfo?.user?.email,
+        type: 'User',
+      };
+      setUser(user);
+      await storeData('auth', user);
+      navigation.navigate(BOTTOM_TAB);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   return (
     <KeyboardAvoidingView
@@ -110,6 +132,7 @@ const Login = () => {
             </View>
             <View style={styles.socialCont}>
               <CustomButton
+                onPress={signIn}
                 linearColor={linearColorW}
                 btnContStyle={styles.btnOutLineContStyle}
                 icon={<Google />}
